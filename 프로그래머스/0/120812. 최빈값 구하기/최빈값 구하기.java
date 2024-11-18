@@ -5,10 +5,11 @@ class Solution {
         int answer = 0;
         // 정렬
         Arrays.sort(array);
-        int max = 0; //최빈값
-        int now = 1;
-        int num = -1;
-        boolean same = false;
+        
+        int count = 0; // 출현 횟수
+        int now = 1; // 현재 값의 출현 횟수
+        int num = -1; // 최빈값
+        boolean same = false; // 최빈값이 중복되는가?
         if(array.length == 1){
             answer = array[0];
         }
@@ -16,11 +17,11 @@ class Solution {
             for(int i=1;i<array.length;i++){
                 if(array[i]==array[i-1]){
                     now += 1; 
-                    if (max == now){
+                    if (count == now){
                         same = true;
                     }
-                    else if(max < now){
-                        max = now; 
+                    else if(count < now){
+                        count = now; 
                         num = array[i];
                         same = false;
                     }
