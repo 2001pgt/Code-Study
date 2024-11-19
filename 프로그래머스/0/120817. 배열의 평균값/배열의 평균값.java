@@ -10,3 +10,12 @@ class Solution {
         return answer;
     }
 }
+// 다른 풀이
+// Arrays.stream을 활용한 풀이
+import java.util.Arrays;
+
+class Solution {
+    public double solution(int[] numbers) {
+        return Arrays.stream(numbers).average().orElse(0); // 평균을 구하는 메서드
+    }
+}
