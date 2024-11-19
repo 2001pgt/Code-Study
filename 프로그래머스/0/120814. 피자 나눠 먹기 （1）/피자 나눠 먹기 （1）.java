@@ -16,3 +16,18 @@ class Solution {
         return answer;
     }
 }
+// 다른 풀이
+class Solution {
+    public int solution(int n) {
+        return (n + 6) / 7; // ???? 천잰가
+    }
+}
+
+// 삼항 연산자 이용한 풀이
+class Solution {
+    public int solution(int n) {
+        int answer = (n%7==0) ? n/7 : n/7 + 1;
+
+        return answer;
+    }
+}
