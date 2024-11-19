@@ -22,6 +22,12 @@ int solution(int array[], size_t array_len) {
 }
 // 다른 풀이
 // qsort를 이용한 풀이
+// qsort는 qsort(array, array_len, sizeof(int), compare);
+// array: 정렬할 배열.
+// array_len: 배열의 길이.
+// sizeof(int): 배열 요소의 크기(바이트 단위).
+// compare: 정렬 기준을 정의한 비교 함수.
+// 배열은 오름차순으로 정렬됩니다.
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
