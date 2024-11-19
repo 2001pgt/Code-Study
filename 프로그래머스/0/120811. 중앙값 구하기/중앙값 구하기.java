@@ -2,12 +2,13 @@ import java.util.Arrays;
 
 class Solution {
     public int solution(int[] array) {
-        Arrays.sort(array);
+        Arrays.sort(array); // 정렬 메서드
         int answer = 0;
         answer = array[array.length/2];
         return answer;
     }
 }
+// 추가 풀이
 // 시프트 연산자 사용
 import java.util.Arrays;
 
