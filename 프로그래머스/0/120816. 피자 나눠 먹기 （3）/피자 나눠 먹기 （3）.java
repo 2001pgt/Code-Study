@@ -16,3 +16,16 @@ class Solution {
         return answer;
     }
 }
+// 다른 풀이
+// 삼항 연산자 사용
+class Solution {
+    public int solution(int slice, int n) {
+        return n % slice > 0 ? n/slice+1 : n/slice;
+    }
+}
+// 연산만 사용
+class Solution {
+    public int solution(int slice, int n) {
+        return (n+slice-1)/slice;
+    }
+}
