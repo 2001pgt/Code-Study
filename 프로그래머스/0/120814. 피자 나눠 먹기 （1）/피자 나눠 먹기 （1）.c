@@ -18,3 +18,15 @@ int solution(int n) {
         }
         return answer;
 }
+
+// 다른 풀이
+// 삼항연산자 활용
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int n) {
+    int answer = 0;
+    answer = n / 7 + ((n % 7 == 0) ? 0 : 1);
+    return answer;
+}
