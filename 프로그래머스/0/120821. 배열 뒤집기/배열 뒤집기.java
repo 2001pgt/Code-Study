@@ -11,3 +11,18 @@ class Solution {
         return num_list;
     }
 }
+// 다른 풀이
+// Collectors 클래스의 reverse() 메서드 활용
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(int[] numList) {
+        List<Integer> list = Arrays.stream(numList).boxed().collect(Collectors.toList());
+
+        Collections.reverse(list); // 뒤집기
+        return list.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
