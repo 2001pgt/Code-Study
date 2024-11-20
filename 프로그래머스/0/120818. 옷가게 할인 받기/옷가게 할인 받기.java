@@ -1,11 +1,8 @@
 class Solution {
     public int solution(int price) {
         int answer = 0;
-
-        if(price>=500000) return (int)(price*0.8);
-        if(price>=300000) return (int)(price*0.9);
-        if(price>=100000) return (int)(price*0.95);
-
-        return price;
+        double ratio=((price>=500000)?(0.8):((price>=300000)?(0.9):((price>=100000)?(0.95):(1.0))));
+        answer = (int)(price*ratio);
+        return answer;
     }
 }
