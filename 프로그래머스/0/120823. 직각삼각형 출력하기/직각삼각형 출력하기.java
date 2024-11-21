@@ -11,7 +11,7 @@ public class Solution {
                 System.out.print("*"); // 출력
                 count++; // * 출력횟수 증가
             }
-            System.out.println("");
+            System.out.println(); // 줄바꿈
         }
     }
 }
