@@ -18,6 +18,8 @@ int* solution(int num_list[], size_t num_list_len) {
         }
         return answer;
 }
+// 둘의 차이는 malloc은 동적 할당시 원소가 초기화 되지않고 쓰레기 값이 들어 갈수 있기 때문에 할당 후 0으로 초기화 하는 작업을 해줘야한다
+// calloc은 동적할당 시 전부 0으로 초기화 시켜버리기때문에 따로 초기화를 하지 않아도 된다.
 
 // 다른 풀이 malloc으로 동적할당
 #include <stdio.h>
@@ -41,5 +43,3 @@ int* solution(int num_list[], size_t num_list_len) {
 
     return answer;
 }
-// 둘의 차이는 malloc은 동적 할당시 원소가 초기화 되지않고 쓰레기 값이 들어 갈수 있기 때문에 할당 후 0으로 초기화 하는 작업을 해줘야한다
-// calloc은 동적할당 시 전부 0으로 초기화 시켜버리기때문에 따로 초기화를 하지 않아도 된다.
