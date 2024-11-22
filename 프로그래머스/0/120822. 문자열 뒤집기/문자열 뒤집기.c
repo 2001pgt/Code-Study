@@ -15,3 +15,25 @@ char* solution(const char* my_string) {
         answer[len] = '\0'; // 널 문자 추가
         return answer;
 }
+
+// 다른 풀이
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+// 파라미터로 주어지는 문자열은 const로 주어집니다. 변경하려면 문자열을 복사해서 사용하세요.
+char* solution(const char* my_string) {
+    // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
+    char* answer = (char*)malloc(5);
+    const size_t len = strlen(my_string);
+
+    for(int i=0; i<=len; i++)
+    {
+        answer[i] = my_string[len - i - 1];
+    }
+
+
+
+    return answer;
+}
+// 비슷한 풀이지만 my_string의 \n까지 복사해서 answer에 삽입해 줌으로써  answer[len] = '\0'; // 널 문자 추가 과정을 없앴다.
