@@ -22,3 +22,24 @@ class Solution {
         return answer;
     }
 }
+// 다른 풀이
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] numbers, int num1, int num2) {
+        // Arrays 패키지의 copyOfRange라는 구간을 자르는 메서드를 이용
+        return Arrays.copyOfRange(numbers, num1, num2 + 1);
+    } 
+}
+
+class Solution {
+    public int[] solution(int[] numbers, int num1, int num2) {
+        int[] answer = new int[num2 - num1 + 1];
+
+        // num2까지 출력되게 범위 제한
+        for (int i = num1; i <= num2; i++) {
+            answer[i -num1] = numbers[i]; // num1 만큼 인덱스 i 에서 빼준다
+        }
+        return answer;
+    }
+}
