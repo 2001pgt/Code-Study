@@ -4,7 +4,7 @@ class Solution {
     public int[] solution(int[] emergency) {
         int[] answer = new int[emergency.length];
         int[] sortedEmergency = emergency.clone();
-        // 정렬
+        // 내림차순 정렬
         for(int i=0;i<emergency.length;i++){
             for(int j=1;j<emergency.length;j++){
                 int tmp = sortedEmergency[j];
@@ -14,6 +14,7 @@ class Solution {
                 }
             }
         }
+        // emergency의 현재값과 같은 값을 sortedEmergency에서 찾아 인덱스+1한 값을 answer에 넣어준다.
         for(int i=0;i<emergency.length;i++){
             for(int j=0;j<emergency.length;j++){
                 if(emergency[i] == sortedEmergency[j]){
