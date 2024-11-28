@@ -13,3 +13,22 @@ class Solution {
         return answer;
     }
 }
+
+// 다른 풀이
+class Solution {
+    public int[][] solution(int[] num_list, int n) {
+        int[][] answer = {};
+
+        int length = num_list.length;
+
+        answer = new int[length/n][n];
+
+        for(int i=0; i<length; i++){
+            // 나누기와 나머지를 이용한여 풀었다.
+            // for문이 한개 지만 2중 for문을해도 총 반복횟수는 같다.
+            answer[i/n][i%n]=num_list[i];
+        }
+
+        return answer;
+    }
+}
