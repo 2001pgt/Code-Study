@@ -20,3 +20,9 @@ class Solution {
         return numbers[(k-1)*2 - numbers.length*n];
     }
 }
+// 다른 풀이
+class Solution {
+    public int solution(int[] numbers, int k) {
+        return (k-1)*2 % numbers.length+1; // 배열크기만큼 빼는 과정을 그냥 나머지를 구하는 방법으로 간단하게 해결하였다.
+    }
+}
