@@ -12,3 +12,16 @@ class Solution {
         return numbers[0]*numbers[1];
     }
 }
+
+// 다른 풀이
+import java.util.*;
+
+class Solution {
+    public int solution(int[] numbers) {
+        int answer = 0;
+
+        Arrays.sort(numbers); // 정렬 메서드 사용
+
+        return numbers[numbers.length-1]*numbers[numbers.length-2];
+    }
+}
