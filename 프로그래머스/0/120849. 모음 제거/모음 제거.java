@@ -22,3 +22,15 @@ class Solution {
         return answer;
     }
 }
+
+// 다른풀이
+// replace메서드 활용
+class Solution {
+    public String solution(String my_string) {
+        String answer = "";
+
+        answer = my_string.replaceAll("[aeiou]", "");
+
+        return answer;
+    }
+}
