@@ -14,3 +14,17 @@ class Solution {
         return answer;
     }
 }
+
+// 다른 풀이
+// substring 활
+class Solution {
+    public String solution(String cipher, int code) {
+        String answer = "";
+        // code의 크기만큼 건너뛰면서 반복문 실행
+        for (int i = code; i <= cipher.length(); i = i + code) {
+            answer += cipher.substring(i - 1, i); // i-1부터 i-1까지 자르기 때문에 i-1번째 문자를 잘라낸다는 의미
+        }
+
+        return answer;
+    }
+}
