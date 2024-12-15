@@ -28,3 +28,21 @@ class Solution {
         return answer;
     }
 }
+
+// gpt가 만든 최적화 코드
+class Solution {
+    public String solution(String cipher, int code) {
+        StringBuilder sb = new StringBuilder(); // StringBuilder 생성
+        for (int i = code - 1; i < cipher.length(); i += code) {
+            sb.append(cipher.charAt(i)); // code 간격의 문자 추가
+        }
+        return sb.toString(); // 결과 문자열 반환
+    }
+}
+
+// Implementation	Average Time (s)
+// StringBuilder	0.257
+// String Concatenation	0.084
+// Optimized Solution	0.034
+// 위의 두 코드의 시간을 측정한 것이고 마지막은 gpt에서 최적화 시킨 코드의 시간이다
+// 반복문 하나로 불필요한 부분을 줄이고 리턴할때도 값을 변수에넣지 않고 변환후 바로 리턴한다.
