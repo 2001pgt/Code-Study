@@ -56,3 +56,36 @@ class Solution {
         return Long.valueOf(result);
     }
 }
+
+// 다른 풀이
+// 인덱스 값이 문자열의 값과 같다는 것을 활용
+class Solution {
+    public long solution(String numbers) {
+
+            String[] numbers_arr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+
+            for (int i = 0; i < numbers_arr.length; i++) {
+                numbers = numbers.replaceAll(numbers_arr[i], String.valueOf(i));
+            }
+
+            long answer = Long.parseLong(numbers);
+            return answer;
+        }
+}
+// replace 노가다
+class Solution {
+    public long solution(String numbers) {
+        return Long.parseLong(
+                numbers.replaceAll("zero", "0")
+                        .replaceAll("one", "1")
+                        .replaceAll("two", "2")
+                        .replaceAll("three", "3")
+                        .replaceAll("four", "4")
+                        .replaceAll("five", "5")
+                        .replaceAll("six", "6")
+                        .replaceAll("seven", "7")
+                        .replaceAll("eight", "8")
+                        .replaceAll("nine", "9")
+        );
+    }
+}
