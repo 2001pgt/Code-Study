@@ -12,7 +12,11 @@ class Solution {
                 list.add(numlist[i]);
             }
         }
-        int[] intArray = list.stream().mapToInt(Integer::intValue).toArray();
+        int[] intArray = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            intArray[i] = list.get(i);
+        }
+
         return intArray;
     }
 }
