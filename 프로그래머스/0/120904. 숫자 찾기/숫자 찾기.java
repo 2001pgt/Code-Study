@@ -14,3 +14,10 @@ class Solution {
         return answer;
     }
 }
+
+// 다른 풀이 문자열 "-"에 정수를 더해서 문자열로 만든뒤 k를 문자열로 바꿔 해당 값이 있는 인덱스를 찾아냄 "-"을 한 이유는 인덱스 는 0부터 세기 때문에 +1해주기위해
+class Solution {
+    public int solution(int num, int k) {
+        return ("-" + num).indexOf(String.valueOf(k));
+    }
+}
