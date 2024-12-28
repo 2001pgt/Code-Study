@@ -7,7 +7,7 @@ class Solution {
             if(i*i == n)
             {
                 answer = 1;
-                break;
+                return answer;
             }
         }
         return answer;
