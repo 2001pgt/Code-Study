@@ -28,6 +28,7 @@ class Solution {
 }
 // str+=my_str.charAt(i);은 기존 문자열에 문자를 추가 하는 것이 아니라 새로운 문자열 객체를 만들기 때문에 연산비용이 커지고 GC의 부담이 증가함
 // 그래서 StringBuilder를 사용하여 속도 개선
+메모리: 82.2 MB, 시간: 0.06 ms
 class Solution {
     public String[] solution(String my_str, int n) {
         StringBuilder sb = new StringBuilder();
