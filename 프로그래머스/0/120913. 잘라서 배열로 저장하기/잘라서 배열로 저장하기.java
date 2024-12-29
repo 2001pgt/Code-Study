@@ -26,6 +26,8 @@ class Solution {
         return strarr;
     }
 }
+// str+=my_str.charAt(i);은 기존 문자열에 문자를 추가 하는 것이 아니라 새로운 문자열 객체를 만들기 때문에 연산비용이 커지고 GC의 부담이 증가함
+// 그래서 StringBuilder를 사용하여 속도 개선
 class Solution {
     public String[] solution(String my_str, int n) {
         StringBuilder sb = new StringBuilder();
@@ -40,5 +42,24 @@ class Solution {
             }
         }
         return strarr;
+    }
+}
+
+// 다른 풀이
+// 아래는 substring을 활용하여 효율적으로 작성된 코드를 가져와 봤다.
+// 배열을 필요한 만큼만 할당 후 배열 크기에 맞춰 substring을 사용하였다.
+메모리: 77.4 MB, 시간: 0.03 ms
+class Solution {
+    public String[] solution(String my_str, int n) {
+        int resultCnt = (my_str.length() + n - 1) / n;
+        String[] answer = new String[resultCnt];
+
+        for (int i = 0; i < resultCnt; i++) {
+            int start = n * i;
+            int end = start + n >= my_str.length()? my_str.length(): start + n;
+            answer[i] = my_str.substring(start, end);
+        }
+
+        return answer;
     }
 }
