@@ -1,21 +1,20 @@
 class Solution {
     public int solution(String my_string) {
         int answer = 0;
-        int ad = -1;
-        for(char c : my_string.toCharArray()){
-            int cInt =  c;
-            if(cInt >= 47 && cInt <= 57){
-                if(ad == -1) ad = cInt -48;
-                else ad = ad * 10 + (cInt-48);
-            }
-            else{
-                if(ad != -1){
-                    answer += ad;
-                    ad = -1;
-                }
+        int num = 0;
+
+        for (char c : my_string.toCharArray()) {
+            if (Character.isDigit(c)) {
+                num = num * 10 + (c - '0'); // 숫자를 누적
+            } else {
+                answer += num; // 숫자 합산
+                num = 0;       // 초기화
             }
         }
-        if(ad != -1) answer += ad;
+
+        // 마지막에 남아 있는 숫자를 더해줌
+        answer += num;
+
         return answer;
     }
 }
