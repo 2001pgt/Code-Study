@@ -1,13 +1,12 @@
 class Solution {
   public int[] solution(long n) {
-      int length = Long.toString(n).length();
-        int[] answer = new int[length];
+      char[] arr = new StringBuffer(String.valueOf(n)).reverse().toString().toCharArray();
+      int[] answer = new int[arr.length];
 
-        for (int i = 0; i < length; i++) {
-            answer[i] = (int) (n % 10);
-            n /= 10;
-        }
+      for(int i = 0; i < arr.length; i++){
+          answer[i] = arr[i] - 48;
+      }
 
-        return answer;
+      return answer;
   }
 }
