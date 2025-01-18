@@ -1,15 +1,15 @@
-import java.util.Arrays;
 class Solution {
-    public int[] solution(long n) {
-        String str = Long.toString(n);
-        // System.out.println(str);
-        
-        int[] answer = new int[str.length()];
-        for(int i=0;i<str.length();i++){
-            // System.out.println(str.charAt(i));
-            answer[i] = str.charAt(str.length()-1-i)-48;
-            // System.out.println(Arrays.toString(answer));
+  public int[] solution(long n) {
+      String a = "" + n;
+        int[] answer = new int[a.length()];
+        int cnt=0;
+
+        while(n>0) {
+            answer[cnt]=(int)(n%10);
+            n/=10;
+            System.out.println(n);
+            cnt++;
         }
-        return answer;
-    }
+      return answer;
+  }
 }
