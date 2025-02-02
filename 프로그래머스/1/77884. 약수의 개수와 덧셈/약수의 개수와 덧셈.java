@@ -1,23 +1,18 @@
 class Solution {
-    public int count_divisor(int x){
-        int cnt = 0;
-        for(int i=1;i<=x;i++){
-            if(x % i ==0 ){
-                cnt++;
-            }
-        }
-        return cnt;
-    }
     public int solution(int left, int right) {
         int answer = 0;
-        for(int i=left;i<=right;i++){
-            if(count_divisor(i) % 2 == 0){
-                answer+=i;
+
+        for (int i=left;i<=right;i++) {
+            //제곱수인 경우 약수의 개수가 홀수
+            if (i % Math.sqrt(i) == 0) {
+                answer -= i;
             }
-            else{
-                answer-=i;
+            //제곱수가 아닌 경우 약수의 개수가 짝수
+            else {
+                answer += i;
             }
         }
+
         return answer;
     }
 }
