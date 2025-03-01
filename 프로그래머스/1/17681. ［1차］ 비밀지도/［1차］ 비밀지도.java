@@ -15,8 +15,6 @@ class Solution {
             binary = Integer.toBinaryString(arr2[i]);
             binary = String.format("%" + n + "s", binary).replace(' ', '0');
             strarr2[i] = binary;
-            System.out.println(Arrays.toString(strarr1));
-            System.out.println(Arrays.toString(strarr2));
         }
         
         // 변환된 지도2개의 같은 인덱스의 값을 비교해 0이 아니면 모두 # 으로 처리
