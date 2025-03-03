@@ -1,0 +1,290 @@
+정리
+2024.12.30
+자바에서 배열은 출력을 할수 없다 -> 배열의 주소를 출력함
+ System.out.println(Arrays.toString(arr)); // 출력: [1, 2, 3, 4] 방식 사용
+아니면 직접 for문으로 배열을  출력하는 함수를 만들거나
+
+2024.12.31
+정수형 변수에 문자를 저장하면 해당 문자의 아스키코드값이 저장된다.
+예)int charNum = my_string.charAt(idx);
+
+2025.01.05
+자바는 포인터가 없기 때문에 swap메서드를 사용 하기위해서 배열을 참조해서 값을 바꿔야한다.
+1. 배열을 사용
+배열은 참조 타입(reference type)이므로, 배열 요소를 수정하면 원본 값에 영향을 미칩니다.
+2. 사용자 정의 클래스 사용
+객체를 통해 값을 감싸면 참조 타입으로 처리되어 스왑이 가능합니다.
+
+2025.01.06
+ArrayList를 정수 배열로 바꿀 때는 stream사용한 방법보다 for문으로 수동변경하는게 훨씬 
+빠르다.
+ // ArrayList를 int[]로 변환 (수동 방식)
+        int[] intArray = new int[arrayList.size()];
+        for (int i = 0; i < arrayList.size(); i++) {
+            intArray[i] = arrayList.get(i);
+        }
+
+2025.01.09
+자바에서 이진수 덧셈을 하는법
+1. 이진수를 10진수로 변환.
+2. 10진수로 덧셈 수행.
+3. 결과를 다시 이진수로 변환
+        int num1 = Integer.parseInt(bin1, 2);
+        int num2 = Integer.parseInt(bin2, 2);
+        int sum = num1 + num2;
+        String answer = Integer.toBinaryString(sum);
+
+2025.01.14 
+자바의 문자열 형변환
+보통 문자열->정수나 이 반대를 많이 하는데 
+이 때 방법은 Integer.parseInt() 또는 Integer.valueOf()가 있다.
+parseInt 는 문자열을 단순히 int 로만 변경해주며 성능은 valueOf()보다 더 좋다
+그럼 valueOf를 왜 쓰냐고 할 수 있지만 valueOf는 문자열을 
+객체형 Integer로 만들어서 다양한 메서드로 조작하기 위해 사용한다.
+Java5 이후 버전 부터 int 변수에 Integer를 저장하면 자동으로 int 바꿔주기 때문에 우리가
+오류가 나지 않을뿐이다.
+결론 단순 문자열을 정수로 변환하기만 원한다면 parseInt()
+정수로 변환해서 다양한 매서드를 사용하고 싶다면 valueOf()-> Collection 클래스같은...
+
+2025.01.16
+unreachable statement 오류
+public String solution(int num) {
+        if(num % 2 == 0){
+            return "Even";
+        } 
+        else {
+            return "Odd";
+        }
+        return "Odd";
+    }
+위 코드는 원래 라면 있어야 할 마지막 리턴 문이 필요없다.
+왜냐하면 if-else문 내에서 반드시 return이 발생 하기 때문에 마지막 리턴은 도달 할 수없다.
+그래서 unreachable statement 오류가 뜬다.
+이는 마지막 리턴문을 삭제하면 해결된다.
+
+
+2025.01.18
+class Solution {
+    public long[] solution(int x, int n) {
+        long[] arr = new long[n];
+        for(int i=0;i<n;i++){
+            arr[i] = (i+1)*x;
+        }
+        return arr;
+    }
+}
+해당 코드는 문제점이 있다.
+i+1 과 x의 곱이 int 의 범위를 넘어서면 오버플로우가 발생한다.
+이를 해결하기 하기 위해서는 x 나 i+1 둘중 하나가 long타입이거나 
+계산한 결과를 long으로 타입변환을 해주면 된다.
+먼저 x를 long으로 바꾸는건 함수 매개변수에 long x를 넣어주거나 (long)x를 해준다.
+i+1를 long으로 바꾸는건 (long)i+1을해준다.
+혹시 for 문안의 int i=0 을 long i=0으로 바꿔도 되지않을까 해서 해봤더니 이 때는 arr[i]에 들어가는
+인덱스 값의 자료형은 int이어야 해서 오류가 발생한다.
+새로 알게된 점: 인덱스 값의 자료형은 int여야 한다.
+
+2025.02.01
+자바에서 char [] 형태의 빈 문자 배열을 생성하면 원소는 "\0"(널 문자)로 채워진다.
+
+2025.02.04
+Math.max(int x.int y) 는 둘중 더큰값을 반환한다.
+
+2025.02.05 
+문자열을 문자 배열로 변경하는 방법
+1. char[] charArray = s.toCharArray();
+2. 새로운 문자 배열을 생성해서 charAt()매서드로 하나씩 넣어주기
+
+문자배열을 문자열로 변경하는 방법
+1. String str = new String(charArray); 
+2. String str = String.valueOf(charArray); 
+3. StringBuilder sb = new StringBuilder();
+        for (char c : charArray) {
+            sb.append(c);
+        }
+        
+        String str = sb.toString(); // 문자 배열을 문자열로 변환
+3번은 성능 최적화 가능
+
+2025.02.11 
+1. String -> Long
+Long.parseLong(String s);
+
+2. NumberFormatException 
+문자열을 숫자로 변환할 때 형식이 잘못된 경우 발생하는 예외
+Integer.parseInt(), Long.parseLong(), Double.parseDouble() 같은 메서드를 사용할 때 문자열이 숫자로 변환할 수 없는 형식이면 발생
+
+
+2025.02.13 
+split()매서드
+
+1. split(String regex)	                 regex를 기준으로 문자열을 나누어 배열 반환
+2. split(String regex, int limit)	limit   개수만큼 분할
+3. split("[,;:]")	                         여러 개의 구분자로 나누기
+4. split("\\s+")	                         연속된 공백 제거
+5. split("\\.")	                         . (점)을 기준으로 나눌 때 \\. 사용
+6. split(",", -1)	                         끝의 빈 문자열까지 포함
+
+
+정규 표현식	의미
+.			아무 문자 한 개
+\d			숫자 (0-9)
+\w			문자 (a-z, A-Z, 0-9, _)
+\s			공백 (스페이스, 탭, 개행)
++			1회 이상 반복
+*			0회 이상 반복
+?			0 또는 1번 등장
+{n,m}			최소 n번 ~ 최대 m번 반복
+[a-zA-Z]		알파벳 대소문자
+[^abc]		a, b, c가 아닌 문자
+`(A			B)`
+
+split("\\s")과 split("\\s+")의 차이 
+전자는 공백 한개를 기준으로 나누기 때문에 split(" ")과 동일한 결과
+후자는 연속된 공백들을 하나의 구분자로 처리하기 때문에 hello   world!와 같은 공백이 여러개인
+문장이 나와도 hello, world! 두개로 구분해줌
+
+2025.02.17
+아스키 코드 활용
+
+코드				설명									결과
+c = c + n;			❌ int 값을 char에 직접 대입 불가 → 오류 발생	❌ 컴파일 에러
+c = (char) (c + n);	✅ (char)를 사용해 형 변환하면 해결			✅ 정상 실행
+c += n;			✅ += 사용 시 자동 형 변환됨				✅ 정상 실행
+
+2025.02.23
+자바 ArrayList 사용시 정렬을 하고싶다면
+Collections.sort()매서드를 사용한다.
+리버스는 Collections.reverse() 를 사용 내림차순으로 정렬하고 싶다면 정렬 후 리버스
+일반 배열을 정렬 하고싶다면 
+Arrays.sort()
+내림차순 정렬은 Arrays.sort() + Comparator 로 정렬 방식을 조작하여
+ Arrays.sort(배열명 , Comparator.reverseOrder()); 라고 한다.
+
+2025.02.24
+"one4seveneight"	 를 1478 로 바꾸는것 처럼 문자열의 특정 부분을 내가 원하는 형태로 바꾸는방법
+replace 와 replaceAll이 있다. https://coding-factory.tistory.com/128 블로그 참고
+둘다 문자열에서 매서드의 첫번째 인자를 두번째 인자로 바꾸는 역할을 하는데
+이때 replace는 [0~9]와 같은 정규식을 받을 수 없고 그대로 문자열로 받아드림 대신 속도가 빠르다
+replaceAll은 정규식으로 첫번째 인자를 받는다 그래서 유연하고 간단한 조작이 가능하지만 성능면에서 부족하다.
+그래서 내가 정규식을 사용해서 문자열을 바꾸고 싶다면 replaceAll
+정규식을 제외한 문자열 치환을 하고 싶다면 replace를 사용한다.
+예시) replace와 replaceAll 의 속도비교 
+1. replaceAll
+메모리: 72.9 MB, 시간: 0.56 ms
+class Solution {
+    public int solution(String s) {
+        String[] strArr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        for(int i = 0; i < strArr.length; i++) {
+            s = s.replaceAll(strArr[i], Integer.toString(i)); 이때는
+        }
+        return Integer.parseInt(s);
+    }
+}
+2. replace
+메모리: 80.4 MB, 시간: 0.11 ms
+class Solution {
+    public int solution(String s) {
+        String[] strArr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        for(int i = 0; i < strArr.length; i++) {
+            s = s.replace(strArr[i], Integer.toString(i));
+        }
+        return Integer.parseInt(s);
+    }
+}
+예시를 보다시피 replace의 속도가 현저히 빠르다는 것을 볼 수있다.
+
+2025.02.25 
+HashMap 클래스
+1. 생성
+ HashMap<키 자료구조,값 자료구조> 객체명 = new HashMap<>();
+2. 요소 추가 (put 메서드) 
+ 객체명.put(키,값); // 키값이 중복될 경우 값을 덮어쓰기함
+3. 요소 조회 (get 메서드)
+객체명.get(키) // 키가 존재하지 않으면 null 반환
+4. 키,값 존재 여부 확인 (containsKey, containsValue 메서드)
+객체명.containsKey(키);
+객체명.containsValue(값);
+5. 요소 삭제 (remove 메서드)
+객체명.remove(키);
+6. 기타 유용한 메서드
+size() // HashMap에 저장된 엔트리의 개수를 반환합니다.
+
+isEmpty() // HashMap이 비어있는지 확인합니다.
+
+clear() // 모든 엔트리를 삭제합니다.
+
+// 개념
+HashMap의 주요 연산(삽입, 검색, 삭제)은 평균적으로 **O(1)**의 시간 복잡도를 가집니다.
+ 그러나 해시 충돌이 발생할 경우, 특히 모든 키가 동일한 해시값을 갖는 극단적인 상황에서는 내부 버킷이 연결 리스트로 구성되어 **O(n)**의 시간 복잡도를 가질 수 있습니다.
+ Java 8부터는 이러한 최악의 경우를 개선하기 위해, 일정 수준 이상의 충돌이 발생하면 연결 리스트를 균형 이진 검색 트리(레드-블랙 트리)로 변환
+이 경우 최악의 시간 복잡도는 **O(log n)
+평균 경우: O(1)
+최악의 경우 (Java 7 이하): O(n)
+최악의 경우 (Java 8 이상): O(log n) (해시 충돌이 많을 경우)
+
+
+2025.02.28
+Priority Queue 자료구조
+min-heap을 사용 // 오름차순정렬 -> 내림차순으로 변경가능 Comparator.reverseOrder() 사용
+시간복잡도
+삽입 (offer/add): O(log n)
+새로운 요소를 추가할 때 힙 구조를 유지하기 위해 로그 시간 내에 재정렬합니다.
+
+삭제 (poll/remove): O(log n)
+최상위(우선순위가 가장 높은) 요소를 제거한 후, 힙 재구성이 필요합니다.
+
+조회 (peek/element): O(1)
+큐의 최상위 요소를 단순히 반환하기 때문에 상수 시간 내에 수행됩니다.
+
+크기 확인 (size): O(1)
+내부 변수로 크기를 관리하여 즉시 반환합니다.
+
+메서드	설명
+offer(E e)	새로운 요소를 큐에 추가합니다. 삽입에 실패하면 false를 반환합니다.
+add(E e)	요소를 추가합니다. 삽입 실패 시 예외를 발생시킵니다.
+peek()	큐의 최상위 요소를 조회하며, 삭제하지 않습니다. 큐가 비어있으면 null을 반환합니다.
+element()	peek()와 유사하지만, 큐가 비어있을 경우 예외를 발생시킵니다.
+poll()		큐의 최상위 요소를 삭제하고 반환합니다. 큐가 비어있으면 null을 반환합니다.
+remove()	큐의 최상위 요소를 삭제하고 반환합니다. 큐가 비어있으면 예외를 발생시킵니다.
+size()		큐에 저장된 요소의 개수를 반환합니다.
+isEmpty()	큐가 비어있는지 여부를 확인합니다.
+clear()	큐의 모든 요소를 제거합니다.
+iterator()	큐 내 요소들을 순회할 수 있는 Iterator를 반환합니다.
+toArray()	큐의 요소들을 배열로 변환하여 반환합니다.
+
+
+2025.03.01
+1. 비트 연산자 (|)
+두 이진수의 각 자리수를 비교하여, 둘 중 하나라도 1이면 결과는 1이 되는 연산자입니다.
+2. Integer.toBinaryString(int i)
+정수를 이진수 문자열로 변환합니다.
+3. String.format(String format, Object... args)
+지정된 포맷에 따라 문자열을 생성합니다. 여기서는 오른쪽 정렬하여 전체 길이를 맞추기 위해 사용됩니다.
+
+포맷 지정자의 구성
+%[인덱스$][플래그][너비][.정밀도]변환문자
+인덱스 (Index):
+
+여러 개의 인자가 있을 때, 특정 인자를 선택할 수 있습니다.
+예: %2$s 는 두 번째 인자를 문자열로 출력.
+플래그 (Flags):
+
+-: 좌측 정렬
++: 부호를 항상 표시
+0: 숫자 앞에 0으로 채움
+,: 천 단위 구분 기호 사용
+예: %05d 는 5자리의 정수를 0으로 채워 출력 (예: 00042).
+너비 (Width):
+
+출력할 최소 문자 수를 지정합니다. 지정한 너비보다 값의 길이가 짧으면 공백 또는 지정한 플래그에 따라 다른 문자가 채워집니다.
+예: %10s 는 최소 10자리의 문자열로 출력 (길이가 부족하면 앞에 공백 추가).
+정밀도 (Precision):
+
+숫자나 문자열의 출력 길이를 제한합니다.
+예: %.2f 는 소수점 이하 2자리까지 출력, %10.2f 는 전체 너비 10자리에서 소수점 이하 2자리 출력.
+변환문자 (Conversion):
+
+실제로 인자를 어떤 형식으로 출력할지 결정합니다 (예: s, d, f 등).
+
+4. substring(int beginIndex) 및 substring(int beginIndex, int endIndex)
+문자열의 일부를 추출하는 메서드입니다. 이 코드에서는 문자열의 마지막 n글자를 추출하는 데 사용됩니다.
