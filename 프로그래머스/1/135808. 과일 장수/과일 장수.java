@@ -7,14 +7,13 @@ class Solution {
             // 정렬된 리스트의 m번째 원소의 점수 * m을 한 값을 answer에 추가한다
         // 남은 사과의 개수가 m보다 적다면 종료
         Arrays.sort(score);
-
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int num : score) {
-            list.add(num);
+        for (int i = 0; i < score.length / 2; i++) {
+            int temp = score[i];
+            score[i] = score[score.length - 1 - i];
+            score[score.length - 1 - i] = temp;
         }
-        Collections.reverse(list);
         for(int i=0;i<score.length/m;i++){
-            answer += (list.get(i*m+m-1)*m);
+            answer += (score[i*m+m-1]*m);
         }
         // System.out.println(Arrays.toString(score));
         // System.out.println(list);
