@@ -485,3 +485,71 @@ public class ConsoleExample {
         }
     }
 }
+
+
+2025.03.30
+static 키워드
+클래스 내에서 함수를 생성하고 메인 함수에서 이를 실행하면 오류가 발생
+ -> 왜 안될까? -> static 여부 차이
+
+자바에서 변수나 메서드를 정의할 때 static을 붙이면, **“객체(instance)를 생성하지 않아도 접근할 수 있게 만든다”**는 뜻이다.
+-> 그럼 객체를 생성하면 접근이 가능한가? -> O 그렇다. 실제 예시를 보자
+예)✅ 방법 1: sayHello()도 static으로 만들기
+public class Main {
+    public static void sayHello() {
+        System.out.println("Hello");
+    }
+
+    public static void main(String[] args) {
+        sayHello(); // ✅ 정상 작동
+    }
+}
+이렇게 같은 클래스 내에서 함수를 생성할때  static를 붙여주면 메인 메서드에서 사용가능
+
+✅ 방법 2: 객체를 생성해서 호출하기
+public class Main {
+    public void sayHello() {
+        System.out.println("Hello");
+    }
+
+    public static void main(String[] args) {
+        Main m = new Main();  <-- 메인 클래스의 sayHello 객체 생성
+        m.sayHello(); // ✅ 정상 작동
+    }
+}
+이렇게 두가지 방법이 가능하다.
+
+그럼 메서드안에서 함수를 정의하고 실행하는건 안되는 걸까?
+-> 불가능하다. -> 자바에서 메서드는 클래스안에서만 정의 가능
+만약 메서드 안에서만 잠깐 쓸 함수가 필요하면?
+-> 람다나 익명클래스를 사용하는방식으로 대신한다.
+
+그럼 람다와 익명클래스가 뭘까?
+->  이 두가지를 알기 위해서 먼저 익명함수에 대해서 알아보자
+-> 익명함수는 "이름이 없는 함수" 를 뜻한다.
+public void sayHello() {
+    System.out.println("Hello!");
+}
+보통 이렇게 이름 있는 함수를 생성함
+
+하지만 익명 함수는:
+이름 없이 필요한 곳에 바로 써서 그 순간만 사용하고 버리는 함수다.
+
+그런데 자바에는 익명함수를 직접 쓰지 못한다. 
+-> 그래서 익명 클래스로 비슷하게 흉내낸것
+예)
+Runnable r = new Runnable() {
+    public void run() {
+        System.out.println("Hi!");
+    }
+};
+
+익명으로 인터페이스 Runnable을 구현한 익명 클래스다.
+↑ 이렇게 클래스 이름을 안 주고 그냥 new Runnable() {} 라고 함.
+그래서 "익명 클래스"고, 여기에 들어간 run()은 익명 클래스 안에서만 쓰이는 메서드다.
+
+그리고 이 익명 클래스가 보통 짧은 동작 하나를 담고 있어서,
+함수처럼 쓰이기 때문에 “익명 함수”처럼 사용된다고 말한다.
+
+람다는 이 익명 클래스 패턴을 더 간단하게 바꾼 것
+Runnable r = () -> System.out.println("Hi!");
