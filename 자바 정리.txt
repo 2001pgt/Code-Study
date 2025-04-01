@@ -341,6 +341,7 @@ Stack<Integer> stack = new Stack<>(); // 객체 생성
 Vector를 상속받아 구현됨
 스레드 안전(Thread-Safe)하나, 성능 면에서는 다소 느릴 수 있음
 
+
 Deque 인터페이스의 구현체 사용
 Deque<Integer> stack = new ArrayDeque<>(); // 객체 생성
 
@@ -414,7 +415,6 @@ public class ScannerExample {
     }
 }
 
-
 2. BufferedReader 클래스
 특징:
 InputStreamReader와 함께 사용하여 한 줄 전체를 읽어올 수 있음
@@ -486,7 +486,6 @@ public class ConsoleExample {
     }
 }
 
-
 2025.03.30
 static 키워드
 클래스 내에서 함수를 생성하고 메인 함수에서 이를 실행하면 오류가 발생
@@ -553,3 +552,12 @@ Runnable r = new Runnable() {
 
 람다는 이 익명 클래스 패턴을 더 간단하게 바꾼 것
 Runnable r = () -> System.out.println("Hi!");
+
+2025.04.01
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in))로 여러 정수를 공백을 기준으로 각각 입력받는방법
+
+String input = br.readLine();           // "4 3" 전체를 문자열로 읽음
+        String[] tokens = input.split(" ");       // 공백을 기준으로 분리
+        int n = Integer.parseInt(tokens[0]);   // 첫 번째 숫자 파싱
+        int k = Integer.parseInt(tokens[1]);   // 두 번째 숫자 파싱
+입력받은 문자열을 공백을 기준으로 나눠 문자열배열에 넣고 각각의 문자열을 정수로 변환
