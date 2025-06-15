@@ -1,0 +1,203 @@
+네트워크 11장 연습문제
+1. IP 프로토콜의 주요 기능이 아닌 것은?
+A. 주소 지정
+B. 데이터 링크 제어
+C. 패킷 분할 및 재조합
+D. 라우팅
+
+2. 다음 중 IP 계층의 서비스 품질(QoS)에 해당하지 않는 것은?
+A. 대역폭
+B. 신뢰성
+C. 데이터 보안
+D. 지터
+
+3. 이메일 서비스가 가장 중요하게 요구하는 QoS 요소는?
+A. 낮은 지터
+B. 높은 대역폭
+C. 높은 신뢰성
+D. 낮은 지연
+
+4. 혼잡제어에서 사용되는 빈 패킷으로, 상대방에게 혼잡을 알리는 용도로 사용되는 것은?
+A. Fragment Packet
+B. Echo Packet
+C. Choke Packet
+D. ACK Packet
+
+5. Choke Packet과 관련된 IP 헤더 필드는?
+A. TTL
+B. ECN
+C. DF
+D. Protocol
+
+6. 토큰 버킷 알고리즘의 기본 원리는?
+A. 요청마다 토큰을 생성하여 패킷을 전송
+B. 요청이 많을수록 토큰이 빨리 채워짐
+C. 일정 시간마다 생성된 토큰이 있을 때만 요청 처리
+D. 항상 일정한 속도로 전송 처리
+
+7. 다음 중 IP 패킷이 여러 개로 나뉘어 전송될 때, 각 조각이 원래 패킷의 어느 부분인지 알려주는 필드는?
+A. TTL
+B. Fragment Offset
+C. DF
+D. Identification Number
+
+8. 패킷이 마지막 조각임을 나타내는 필드는?
+A. DF
+B. TTL
+C. MF
+D. ECN
+
+9. 다음 중 IP 패킷이 분할되었을 때, 같은 원본 패킷에서 온 조각들을 식별하는 데 사용되는 필드는?
+A. Source IP
+B. Checksum
+C. Protocol
+D. Identification
+
+10. IP 패킷이 목적지에 도달하지 못하고 무한히 돌아다니는 문제를 방지하기 위한 필드는?
+A. TTL
+B. DF
+C. ECT
+D. MF
+
+11. IP 터널링은 어떤 문제를 해결하기 위해 사용되는가?
+A. 주소 충돌
+B. 패킷 손실
+C. 이기종 네트워크 간의 패킷 전달
+D. 데이터 암호화
+
+12. IPv4의 헤더 길이는 옵션이 없을 경우 몇 바이트인가?
+A. 10
+B. 16
+C. 20
+D. 40
+
+13. IPv6에서 Quality of Service 관련 정보를 담는 필드는?
+A. Flow Label
+B. Payload Length
+C. Hop Limit
+D. Traffic Class
+
+14. IPv6에서 TTL 필드 대신 사용되는 것은?
+A. Hop Count
+B. Hop Limit
+C. Packet Life
+D. Lifetime
+
+15. IPv6 헤더 크기는 얼마로 고정되어 있는가?
+A. 20바이트
+B. 32바이트
+C. 40바이트
+D. 64바이트
+
+16. ECN 필드의 2비트 값 중 혼잡이 발생했음을 나타내는 값은?
+A. 00
+B. 01
+C. 10
+D. 11
+
+17. 수신자가 ECN을 통해 혼잡을 감지한 후 송신자에게 보내는 TCP 플래그는?
+A. RST
+B. CWR
+C. URG
+D. FIN
+
+18. 다음 중 IPv6에서 제거된 기능은?
+A. Source IP 주소
+B. Destination IP 주소
+C. Checksum
+D. TTL
+
+19. Fragment Offset 필드의 단위는?
+A. 바이트
+B. 4바이트
+C. 8바이트
+D. 비트
+
+20. IPv6 주소를 축약할 때 생략 가능한 부분은?
+A. 앞의 0
+B. 중간의 0
+C. 뒤의 0
+D. 모든 자리의 숫자
+
+정답:
+B
+C
+C
+C
+B
+
+C
+B
+C
+D
+A
+
+C
+C
+X -> D
+X -> B
+X -> C
+
+D
+D -> B
+X -> C
+B -> C
+X -> B
+
+
+
+13. IPv6에서 Quality of Service 관련 정보를 담는 필드는? X -> D
+
+A. Flow Label
+B. Payload Length
+C. Hop Limit
+D. Traffic Class
+ 
+14. IPv6에서 TTL 필드 대신 사용되는 것은? X -> B
+A. Hop Count
+B. Hop Limit
+C. Packet Life
+D. Lifetime
+
+15. IPv6 헤더 크기는 얼마로 고정되어 있는가? X -> C
+A. 20바이트 
+B. 32바이트
+C. 40바이트
+D. 64바이트
+
+
+17. 수신자가 ECN을 통해 혼잡을 감지한 후 송신자에게 보내는 TCP 플래그는? D -> B
+A. RST
+B. CWR
+C. URG
+D. FIN
+
+18. 다음 중 IPv6에서 제거된 기능은? X -> C
+A. Source IP 주소
+B. Destination IP 주소
+C. Checksum
+D. TTL
+
+19. Fragment Offset 필드의 단위는? B -> C
+A. 바이트
+B. 4바이트
+C. 8바이트
+D. 비트
+
+20. IPv6 주소를 축약할 때 생략 가능한 부분은? X -> B
+A. 앞의 0
+B. 중간의 0
+C. 뒤의 0
+D. 모든 자리의 숫자
+
+
+
+
+
+
+
+
+
+
+
+

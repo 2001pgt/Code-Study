@@ -1,0 +1,49 @@
+네트워크 11장 연습문제 2회차
+정답
+B
+C
+C
+C
+B
+
+C
+B
+A -> C
+D
+A
+
+C
+C
+D
+C -> B
+C
+
+D
+B
+C
+B -> C
+C -> B
+
+8. 패킷이 마지막 조각임을 나타내는 필드는? A -> C
+A. DF
+B. TTL
+C. MF
+D. ECN
+
+14. IPv6에서 TTL 필드 대신 사용되는 것은? C -> B
+A. Hop Count
+B. Hop Limit
+C. Packet Life
+D. Lifetime
+
+19. Fragment Offset 필드의 단위는? B -> C
+A. 바이트
+B. 4바이트
+C. 8바이트
+D. 비트
+
+20. IPv6 주소를 축약할 때 생략 가능한 부분은? C -> B
+A. 앞의 0 
+B. 중간의 0
+C. 뒤의 0
+D. 모든 자리의 숫자
