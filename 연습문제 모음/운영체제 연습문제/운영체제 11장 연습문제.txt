@@ -1,0 +1,104 @@
+운영체제 11장 연습문제
+
+
+1.파일 주소 변환 계층화 c -> b
+응용프로그램의 바이트 주소가 디스크 섹터(CHS 물리 주소)까지 도달하기 위해 거치는 계층 순서로 옳은 것은? 
+a) 바이트 주소 → CHS 물리 주소 → 논리 블록 주소
+b) 바이트 주소 → 논리 블록 주소 → CHS 물리 주소
+c) 논리 블록 주소 → 바이트 주소 → CHS 물리 주소
+d) CHS 물리 주소 → 논리 블록 주소 → 바이트 주소
+(참조: 11-1 파일 시스템(황기태).pdf, p.9)
+
+2.디렉터리 구조 – 단일/2단계/트리 구조 a -> c
+두 레벨 디렉터리(two‐level directory)의 특징으로 옳지 않은 것은?
+a) 각 사용자마다 독립된 디렉터리 공간을 가진다.
+b) 같은 파일 이름을 다른 사용자가 동시에 사용할 수 있다.
+c) 그룹화(grouping) 기능을 제공한다.
+d) 검색 시 사용자 디렉터리만 탐색하면 된다.
+(참조: Operating System Concepts – Chapter 10, p.11–19)
+해설:그룹화 기능은 tree‐structured directory 또는 확장된 디렉터리 모델에서야 지원됩니다.
+
+3.트리‐구조 디렉터리 장·단점 b
+트리 구조 디렉터리(tree‐structured directory)의 장점으로 옳은 것은? 
+a) 사이클 발생을 완전히 막아준다.
+b) 경로 이름(path name)을 사용해 효율적 탐색이 가능하다.
+c) 파일 공유(sharing)를 자연스럽게 지원한다.
+d) 디렉터리 검색이 항상 O(1) 시간에 가능하다.
+(참조: Operating System Concepts – Chapter 10, p.11–21)
+
+4.FCB(File Control Block) 구성 요소 a -> c
+파일 제어 블록(FCB)에 일반적으로 포함되지 않는 정보는?
+a) 파일 크기(size)
+b) 마지막 액세스 시간(last access time)
+c) 파일이 열려 있는 프로세스들의 파일 포인터 위치
+d) 디스크 상의 첫 번째 데이터 블록 물리 주소
+(참조: Operating System Concepts – Chapter 11, p.12–3)
+해설:FCB: 파일 자체의 불변 메타데이터(크기·타임스탬프·디스크 블록 위치 등)
+
+5.디스크 블록 할당 방법 b -> c
+다음 중 “연속 할당(contiguous allocation)”의 특징이 아닌 것은?
+a) 탐색(seek) 성능이 가장 우수하다.
+b) 외부 단편화가 발생하고 오프라인(compaction)이 필요하다.
+c) 파일 크기 증가 시 자동으로 이어진 블록을 확보한다.
+d) 시작 블록 번호와 길이 정보만으로 관리가 가능하다.
+(참조: Operating System Concepts – Chapter 11, p.12–6)
+해설:파일을 더 크게 만들려면 바로 뒤에 연속된 빈 블록이 있어야 하는데, 외부 단편화로 인해 이 연속 공간이 없을 수 있습니다.
+
+6.FAT(File Allocation Table) d -> b
+FAT 구조의 특징으로 옳은 것은?
+a) 각 파일마다 인덱스 블록을 별도로 유지한다. -> 인덱스 할당 방식
+b) 디스크 전체를 하나의 링크드 리스트처럼 관리한다. 
+c) 파일 블록 포인터를 이중 인덱스 방식으로 저장한다. -> UNIX UFS의 “multi‐level indexed allocation” 
+d) 외부 단편화를 완전히 제거한다. -> “완전히 제거”라는 표현은 조금 과합니다
+(참조: Operating System Concepts – Chapter 11, p.12–10)
+
+7.인덱스 할당(indexed allocation) c -> b
+UNIX UFS에서 사용하는 “다중 인덱스 블록” 구조가 해결하려는 문제는?
+a) 외부 단편화를 완전히 제거
+b) 대용량 파일 지원을 위한 단일 인덱스 블록 크기 한계 극복
+c) 순차 접근 성능 최적화
+d) 페이지 폴트를 줄이기 위한 TLB 활용
+(참조: Operating System Concepts – Chapter 11, p.12–15)
+
+
+9.파일 접근 방식(access methods) x -> b
+“직접 접근(direct‐access)” 파일의 특징으로 옳은 것은?
+a) 오직 순차적 읽기/쓰기가 가능하다.
+b) 논리적 블록 번호(relative record number)를 통해 임의 블록에 접근할 수 있다.
+c) 레코드 크기가 반드시 가변이어야 한다.
+d) OS가 물리적 위치를 제어하지 않고 반드시 연속 할당해야 한다.
+(참조: Operating System Concepts – Chapter 10, p.11–10)
+
+10.파일 보호(protection) x -> d
+UNIX/Linux에서 “chmod 761 file”을 실행하면 부여되는 권한이 아닌 것은?
+a) 소유자(owner)는 읽기·쓰기·실행 모두 가능
+b) 그룹(group)은 읽기·쓰기 가능, 실행 불가
+c) others는 실행만 가능
+d) 그룹 사용자는 삭제(delete) 권한을 갖는다
+(참조: Operating System Concepts – Chapter 10, p.11–29)
+
+정답:
+c -> b
+a -> c
+b
+a -> c
+b -> c
+
+d -> b
+c -> b
+x -> b
+x -> b
+x -> d
+
+
+
+
+
+
+
+
+
+
+
+
+
