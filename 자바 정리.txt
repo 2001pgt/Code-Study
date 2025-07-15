@@ -563,3 +563,29 @@ String input = br.readLine();           // "4 3" 전체를 문자열로 읽음
 입력받은 문자열을 공백을 기준으로 나눠 문자열배열에 넣고 각각의 문자열을 정수로 변환
 
 
+2025.07.15 
+java.util.Stack을 사용하셔서 그런데요, 이유는 util.Stack의 삽입 삭제 메서드들은 synchronized 를 사용하여 스레드 세이프하게 작동됩니다. 요 문제에서는 멀티 스레드 환경을 고려하지 않아도 되니 Stack 대신 Deque를 사용하여 문제를 해결할 수 있습니다. 
+자바 공식 문서에서도 Stack은 사용하지 말고 Collections 친구들을 사용하라고 권장하고 있어요. 이유는 Vector가 레거시이기 때문에
+라는 내용의 답변을 보았다 그래서 이에 대해 조사를 해보았다.
+Legacy = 과거 호환을 위해 남겨둔 옛날 클래스이다
+Vector, Hashtable, Stack 등 은 java1.0버전부터 있떤 자료구조
+Stack은 Vector 상속으로 불필요한 동기화·구식 API를 그대로 물려받음
+
+Java 5부터 등장한 java.util.Deque<E>(이중 끝 큐) 인터페이스는
+스택(LIFO)과 큐(FIFO) 양쪽 용도로 쓸 수 있도록 메서드를 분리(push/pop, offerFirst/pollFirst 등)
+일반적으로 ArrayDeque<E> 또는 LinkedList<E> 구현체를 사용
+동기화되지 않아(synchronized 없음)
+단일 스레드에서 빠른 성능타입 안전한 제네릭 지원
+
+// Deque 사용 예 (ArrayDeque)
+Deque<Integer> deque = new ArrayDeque<>();
+deque.push(1);            // 스택의 push와 동일
+deque.push(2);
+int top2 = deque.pop();   // 스택의 pop과 동일
+
+멀티스레드 안전이 필요하면, java.util.concurrent 또는 Collections.synchronizedXxx 활용
+
+요약 과거의 stack 대신 현대적인 deque를 사용하면 싱글쓰레드 환경에서 더빠름
+
+
+
