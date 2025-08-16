@@ -19,6 +19,6 @@ public class Main {
             D[n][0] = D[n-1][0]+D[n-1][1];
         }
         System.out.println(D[N][1]+D[N][0]);
-
+        // 아 D[1][0] = 0; 이라고 잘못적은걸 못봐서 틀렸네 ㅠ
     }
 }
